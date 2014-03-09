@@ -645,7 +645,8 @@
         //container.appendChild( stats.domElement );
 
         container.addEventListener( 'mousedown', onMouseDown, false );
-        container.addEventListener( 'mousemove', onMouseMove, false );
+        //container.addEventListener( 'mousemove', onMouseMove, false );
+        socket.on('Mueve', onMouseMove);
         container.addEventListener( 'mouseup', onMouseUp, false );
             
         window.addEventListener( 'resize', onWindowResize, false );
@@ -789,8 +790,7 @@
 
       }
 
-      function onMouseMove( event ) {
-
+      function onMouseMove( data ) {
         // if ( isUserInteracting ) {
         
         //   lon = ( event.clientX - onPointerDownPointerX ) * 0.05 + onPointerDownLon;
@@ -799,21 +799,18 @@
         // }
         // mouseX = ( event.clientX - windowHalfX ) * 0.0015 ;
         // mouseY = ( event.clientY - windowHalfY ) * 0.002 ;
+        
+        //console.log("Mueve",data);
+        data.left = data.left+450;
+        //data.top = data.top+250;
+        if ( isUserInteracting ) {
+              lon = ( data.left - onPointerDownPointerX ) * 0.05 + onPointerDownLon;
+              lat = ( data.top - onPointerDownPointerY ) * 0.05 + onPointerDownLat;
+              orbit = 0.0;
+        }
+        mouseX = ( data.left - windowHalfX ) * 0.0015 ;
+        mouseY = ( data.top - windowHalfY ) * 0.002 ;
       }
-
-      socket.on('Mueve', function (data) {
-            console.log("Mueve",data);
-            data.left = data.left+450;
-            //data.top = data.top+250;
-            if ( isUserInteracting ) {
-                  lon = ( data.left - onPointerDownPointerX ) * 0.05 + onPointerDownLon;
-                  lat = ( data.top - onPointerDownPointerY ) * 0.05 + onPointerDownLat;
-                  orbit = 0.0;
-            }
-            mouseX = ( data.left - windowHalfX ) * 0.0015 ;
-            mouseY = ( data.top - windowHalfY ) * 0.002 ;
-      });
-
 
       function onMouseUp( event ) {
         

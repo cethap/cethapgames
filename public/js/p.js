@@ -48,7 +48,8 @@ var socket = io.connect(location.origin);
 			socket.emit('sendReturn',{});
 		});
 
-		$(".cierra").click(function(){
+		$(".cierra").click(function(e){
+			e.preventDefault();
 			socket.emit('sendCierra',{});
 			history.back();
 		});

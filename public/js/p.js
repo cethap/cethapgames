@@ -50,6 +50,7 @@ var socket = io.connect(location.origin);
 
 		$(".cierra").click(function(){
 			socket.emit('sendCierra',{});
+			history.back();
 		});
 
 		$("#up").click(function(){

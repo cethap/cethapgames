@@ -647,6 +647,9 @@
         container.addEventListener( 'mousedown', onMouseDown, false );
         //container.addEventListener( 'mousemove', onMouseMove, false );
         socket.on('Mueve', onMouseMove);
+        socket.on('Cierre', function(data){
+          window.close();
+        });
         container.addEventListener( 'mouseup', onMouseUp, false );
             
         window.addEventListener( 'resize', onWindowResize, false );

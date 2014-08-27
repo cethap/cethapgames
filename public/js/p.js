@@ -48,6 +48,10 @@ var socket = io.connect(location.origin);
 			socket.emit('sendReturn',{});
 		});
 
+		$(".cierra").click(function(){
+			socket.emit('sendCierra',{});
+		});
+
 		$("#up").click(function(){
 			socket.emit('SendArriba',{});
 		});

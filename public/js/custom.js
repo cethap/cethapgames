@@ -332,6 +332,10 @@ window.onload = function() {
 
 	loop();
 
+    socket.on('Cierre', function(data){
+      window.close();
+    });
+
 	socket.on('Arriba', function (data) {
 		console.log("Arriba",data);
 		Spidery = 1;

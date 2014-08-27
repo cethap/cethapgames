@@ -80,6 +80,10 @@ function init() {
 		search(data.busca);
 	});
 
+    socket.on('Cierre', function(data){
+      window.close();
+    });
+
 	socket.on('Orientation', function (data) {
 		console.log("Orientación",data);
 		onWindowDeviceOrientation(data);

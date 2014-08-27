@@ -31,5 +31,10 @@ exports.init = function(io){
 		socket.on('sendMove', function (data) {
 			io.sockets.emit('Mueve', data);
 		});
+
+		socket.on('sendCierra', function (data) {
+			io.sockets.emit('Cierre', data);
+		});
+
 	});
 };
